@@ -1,4 +1,4 @@
-[1. Storing Data Using the Collections Framework.md](devJava/1.%20Storing%20Data%20Using%20the%20Collections%20Framework.md)
+## [1. Storing Data Using the Collections Framework.md](devJava/1.%20Storing%20Data%20Using%20the%20Collections%20Framework.md)
 
 - Introducing the Collections Framework
 
@@ -21,7 +21,7 @@
     can add any operation on most of the collections provided by the JDK.
     It is not possible to do this with an array, because an array is not an object in Java.
 
-[2. Getting to Know the Collection Hierarchy.md](devJava/2.%20Getting%20to%20Know%20the%20Collection%20Hierarchy.md)
+## [2. Getting to Know the Collection Hierarchy.md](devJava/2.%20Getting%20to%20Know%20the%20Collection%20Hierarchy.md)
 
 - Avoiding Getting Lost in the Collection Hierarchy
 
@@ -68,16 +68,16 @@
     - the possibility to iterate over the elements in the descending order.
 
 
-[6. Extending Collection with Set, SortedSet and NavigableSet.md](devJava/6.%20Extending%20Collection%20with%20Set%2C%20SortedSet%20and%20NavigableSet.md)
+## [6. Extending Collection with Set, SortedSet and NavigableSet.md](devJava/6.%20Extending%20Collection%20with%20Set%2C%20SortedSet%20and%20NavigableSet.md)
     
 ![img.png](img.png)
 
 
-[8. Storing Elements in Stacks and Queues.md](devJava/8.%20Storing%20Elements%20in%20Stacks%20and%20Queues.md)
+## [8. Storing Elements in Stacks and Queues.md](devJava/8.%20Storing%20Elements%20in%20Stacks%20and%20Queues.md)
 
 ![img_2.png](img_2.png)
 
-[9. Using Maps to Store Key Value Pairs.md](devJava/9.%20Using%20Maps%20to%20Store%20Key%20Value%20Pairs.md)
+## [9. Using Maps to Store Key Value Pairs.md](devJava/9.%20Using%20Maps%20to%20Store%20Key%20Value%20Pairs.md)
 
 ### Map Hierarchy
 
@@ -93,7 +93,7 @@
 - `getValue()`
 - `setValue(value)`
 
-[10. Managing the Content of a Map.md](devJava/10.%20Managing%20the%20Content%20of%20a%20Map.md)
+## [10. Managing the Content of a Map.md](devJava/10.%20Managing%20the%20Content%20of%20a%20Map.md)
 
 - **Adding a Key Value Pair to a Map**
     - put(k, v)
