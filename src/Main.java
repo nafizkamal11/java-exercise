@@ -6,19 +6,43 @@ import java.util.function.Predicate;
  */
 
 public class Main {
+    static class Range implements Iterable<Integer> {
+
+        private final int start;
+        private final int end;
+
+        public Range(int start, int end) {
+            this.start = start;
+            this.end = end;
+        }
+
+        @Override
+        public Iterator<Integer> iterator() {
+            return new Iterator<>() {
+                private int index = start;
+
+                @Override
+                public boolean hasNext() {
+                    return index < end;
+                }
+
+                @Override
+                public Integer next() {
+                    if (index > end) {
+                        throw new NoSuchElementException("" + index);
+                    }
+                    int currentIndex = index;
+                    index++;
+                    return currentIndex;
+                }
+            };
+        }
+    }
+
     public static void main(String[] args) {
+        for (int i : new Range(0, 5)) {
+            System.out.println("i = " + i);
+        }
 
-        Collection<String> collection = new ArrayList<>();
-        collection.add("a");
-        collection.add("");
-        collection.add(null);
-        collection.add("b");
-        collection.add("");
-        collection.add(null);
-        collection.add("c");
-        System.out.println(collection);     // [a, , null, b, , null, c]
-
-        collection.removeIf(((Predicate<String>) Objects::isNull).or(String::isEmpty));
-        System.out.println(collection);     // [a, b, c]
     }
 }

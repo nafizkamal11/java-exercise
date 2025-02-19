@@ -149,6 +149,84 @@
 
   `Collection` ← `List` ← `ArrayList`
 
+## [4. Iterating over the Elements of a Collection.md](devJava/4.%20Iterating%20over%20the%20Elements%20of%20a%20Collection.md)
+
+- **Using the for-each Pattern**
+
+    ```java
+    Collection<String> strings = List.of("a", "b", "c");
+    
+    for (String element: strings) {
+        System.out.println(element);
+    }
+    ```
+
+- Using an Iterator on a Collection
+
+  `Collection` → `Iterable.Iterator<T> iterator();`
+
+  1. `hasNext()`
+  2. `next()`
+  3. `remove()`
+
+    ```java
+    Collection<String> strings = List.of("a", "b", "c");
+    for (Iterator<String> iterator = strings.iterator(); iterator.hasNext(); ) {
+        System.out.println(iterator.next());
+    }
+    ```
+
+- Updating a Collection While Iterating over It ❓
+
+    ```java
+    Collection<String> strings = new ArrayList<>();
+    strings.add("a");
+    strings.add("b");
+    strings.add("c");
+    
+    Iterator<String> iterator = strings.iterator();
+    while (iterator.hasNext()) {
+        String next = iterator.next();
+        if (next.equals("a"))
+            strings.remove(next);   // ConcurrentModificationException
+    }
+    ```
+
+    ```java
+    Collection<String> collection = new ArrayList<>();
+    collection.add("a");
+    collection.add("b");
+    collection.add("c");
+    
+    collection.removeIf(next -> next.equals("a"));    // [b, c]
+    ```
+
+- Implementing the Iterable Interface
+
+    ```java
+    for (int i: new Iterable<Integer>() {
+        @Override
+        public Iterator<Integer> iterator() {
+            return new Iterator<>() {
+                private int index = 0;
+    
+                @Override
+                public boolean hasNext() {
+                    return index < 5;
+                }
+    
+                @Override
+                public Integer next() {
+                    int currentIndex = index;
+                    index++;
+                    return currentIndex;
+                }
+            };
+        }
+    }) {
+        System.out.println(i); // 01234
+    }
+    ```
 
 ## [6. Extending Collection with Set, SortedSet and NavigableSet.md](devJava/6.%20Extending%20Collection%20with%20Set%2C%20SortedSet%20and%20NavigableSet.md)
     
