@@ -6,43 +6,19 @@ import java.util.function.Predicate;
  */
 
 public class Main {
-    static class Range implements Iterable<Integer> {
-
-        private final int start;
-        private final int end;
-
-        public Range(int start, int end) {
-            this.start = start;
-            this.end = end;
-        }
-
-        @Override
-        public Iterator<Integer> iterator() {
-            return new Iterator<>() {
-                private int index = start;
-
-                @Override
-                public boolean hasNext() {
-                    return index < end;
-                }
-
-                @Override
-                public Integer next() {
-                    if (index > end) {
-                        throw new NoSuchElementException("" + index);
-                    }
-                    int currentIndex = index;
-                    index++;
-                    return currentIndex;
-                }
-            };
-        }
-    }
-
     public static void main(String[] args) {
-        for (int i : new Range(0, 5)) {
-            System.out.println("i = " + i);
-        }
+        Collection<String> collection = new ArrayList<>();
+        collection.add("a");
+        collection.add("b");
+        collection.add("c");
 
+        Iterator<String> iterator = collection.iterator();
+        while (iterator.hasNext()) {
+            String next = iterator.next();
+            if (next.equals("a")) {
+                // collection.remove(next);  // ConcurrentModificationException
+                iterator.remove();          // [b, c]
+            }
+        }
     }
 }

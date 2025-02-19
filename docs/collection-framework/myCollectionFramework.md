@@ -179,17 +179,20 @@
 - Updating a Collection While Iterating over It ❓
 
     ```java
-    Collection<String> strings = new ArrayList<>();
-    strings.add("a");
-    strings.add("b");
-    strings.add("c");
+    Collection<String> collection = new ArrayList<>();
+    collection.add("a");
+    collection.add("b");
+    collection.add("c");
     
-    Iterator<String> iterator = strings.iterator();
+    Iterator<String> iterator = collection.iterator();
     while (iterator.hasNext()) {
         String next = iterator.next();
-        if (next.equals("a"))
-            strings.remove(next);   // ConcurrentModificationException
+        if (next.equals("a")) {
+            // collection.remove(next);  // ConcurrentModificationException
+            iterator.remove();          // [b, c]
+        }
     }
+    
     ```
 
     ```java
