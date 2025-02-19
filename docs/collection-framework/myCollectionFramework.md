@@ -67,6 +67,88 @@
   - NavigableSet
     - the possibility to iterate over the elements in the descending order.
 
+## [3. Storing Elements in a Collection.md](devJava/3.%20Storing%20Elements%20in%20a%20Collection.md)
+
+
+- Exploring the Collection Interface
+
+  `Collection` ← `List` ← `ArrayList`
+
+- Methods That Handle Individual Elements
+  - `add()`
+  - `remove()`
+  - `contains()`
+- Methods That Handle Other Collections
+
+  | **`containsAll()`** | returns true if | all present |
+  | --- | --- | --- |
+  | **`addAll():`** | returns true if | at least one has been added |
+  | **`removeAll():`** | returns true if | at least one has been added |
+  | **`retainAll():`** | returns true if | at least one has been added |
+
+- Methods That Handle The Collection Itself
+  - `size()`
+  - `isEmpty()`
+  - `clear()`
+- Getting an Array of the Elements of a Collection
+  1. `toArray()`
+
+      ```java
+      Collection<String> collection = List.of("a", "b", "c"); // [a, b, c]
+      Object[] array = collection.toArray();                  // [a, b, c]
+      String[] array1 = (String[]) array; // no guarantee that this cast will not fail at runtime
+      ```
+
+  2. `toArray(T[] tab)`
+
+      ```java
+      Collection<String> arrayList = new ArrayList<>(List.of("a", "b", "c")); // [a, b, c]
+      String[] listArray = arrayList.toArray(new String[]{});                 // [a, b, c]
+      String[] listArray0 = arrayList.toArray(new String[0]);                 // [a, b, c]
+      String[] tabString5 = arrayList.toArray(new String[5]);                 // [a, b, c, null, null]
+      ```
+
+      ```java
+      String[] array = {"a", "b", "c", "d", "e", "f"};        // [a, b, c, d, e, f]
+      Collection<String> collection = List.of("1", "2");      // [1, 2]
+      String[] collectionArray = collection.toArray(array);   // [1, 2, null, d, e, f]
+      System.out.println((collectionArray == array));         // true
+      ```
+
+      ```java
+      Collection<String> collection = List.of("a", "b");          // [a, b]
+      String[] emptyArray = {};                                   // []
+      String[] collectionArray = collection.toArray(emptyArray);  // [a, b]
+      ```
+
+  3. `toArray(IntFunction<T[]> generator)`
+
+      ```java
+              Collection<String> collection = List.of("a", "b", "c");         // [a, b, c]
+              String[] collectionArray = collection.toArray(String[]::new);   // [a, b, c]
+      ```
+
+- Filtering out Elements of a Collection with a Predicate
+
+    ```java
+    Collection<String> collection = new ArrayList<>();
+    collection.add("a");
+    collection.add("");
+    collection.add(null);
+    collection.add("b");
+    collection.add("");
+    collection.add(null);
+    collection.add("c");
+    System.out.println(collection);     // [a, , null, b, , null, c]      
+    
+    collection.removeIf(((Predicate<String>) Objects::isNull).or(String::isEmpty));
+    System.out.println(collection);     // [a, b, c]
+    ```
+
+- Choosing an Implementation for the Collection Interface
+
+  `Collection` ← `List` ← `ArrayList`
+
 
 ## [6. Extending Collection with Set, SortedSet and NavigableSet.md](devJava/6.%20Extending%20Collection%20with%20Set%2C%20SortedSet%20and%20NavigableSet.md)
     
