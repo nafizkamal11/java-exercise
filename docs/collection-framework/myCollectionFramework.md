@@ -275,7 +275,7 @@
         System.out.println(list);   // [0, 3]
         ```
 
-  - **Inserting a Collection**
+  - Inserting a Collection
     - `addAll(int index, Collection collection)`.
 - Sorting the Elements of a List
   - `list.sort()` [Java SE 8]
