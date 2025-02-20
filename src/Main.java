@@ -7,18 +7,18 @@ import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
-        Collection<String> collection = new ArrayList<>();
-        collection.add("a");
-        collection.add("b");
-        collection.add("c");
-
-        Iterator<String> iterator = collection.iterator();
-        while (iterator.hasNext()) {
-            String next = iterator.next();
-            if (next.equals("a")) {
-                // collection.remove(next);  // ConcurrentModificationException
-                iterator.remove();          // [b, c]
-            }
+        List<String> list = new ArrayList<>(List.of("0", "1", "2", "3"));
+        ListIterator<String> stringListIterator = list.listIterator(1);
+        while (stringListIterator.hasNext()) {
+            if(stringListIterator.next().equals("1"))
+                stringListIterator.remove();
         }
+
+        System.out.println(list);   // [0, 1, 2, 3]
+
+        list.subList(1, 3).clear();
+        System.out.println(list);   // [0, 3]
+
+
     }
 }

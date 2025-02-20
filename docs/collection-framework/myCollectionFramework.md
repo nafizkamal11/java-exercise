@@ -230,6 +230,63 @@
         System.out.println(i); // 01234
     }
     ```
+  
+## [5. Extending Collection with List.md](devJava/5.%20Extending%20Collection%20with%20List.md)
+
+- Exploring the List Interface
+
+  `Collection` ← `List`
+
+  - The elements of a list have an index.
+  - respects the order in which the elements have been added to this list.
+- Choosing your Implementation of the List Interface
+  - `List`
+    - `ArrayList`
+      - built on an internal array
+      - Iterating over the elements is much faster
+      - choosing a ArrayList is best choice
+        - to iterate through the elements of your list,
+        - to access the elements randomly by their index
+    - `LinkedList`
+      - built on a doubly-linked list.
+      - can access its first and last element faster.
+      - choosing a linked list is best choice
+        - stack
+        - queue
+- Accessing the Elements Using an Index
+  - Accessing a Single Object
+    - `add(index, element)`
+    - `get(index)`
+    - `set(index, element)`
+    - `remove(index)`
+  - Finding the Index of an Object
+    - `indexOf(element)`
+    - `lastIndexOf(element)`
+  - Getting a SubList
+    - `subList(start, end)`
+      - returns a list consisting of the elements between indexes `start` and `end - 1`
+      - any modification operation on the sublist is reflected on the main list.
+
+        ```java
+        List<String> list = new ArrayList<>(List.of("0", "1", "2", "3"));   
+        System.out.println(list);   // [0, 1, 2, 3]
+        
+        list.subList(1, 3).clear();                                         
+        System.out.println(list);   // [0, 3]
+        ```
+
+  - **Inserting a Collection**
+    - `addAll(int index, Collection collection)`.
+- Sorting the Elements of a List
+  - `list.sort()` [Java SE 8]
+  - `Collections.sort(list)` [Java SE 7 and earlier]
+- Iterating over the Elements of a List
+  - `list.listIterator()`
+    - `Iterator` ← `ListIterator`
+      - `hasPrevious()` and `previous()`
+      - `nextIndex()` and `previousIndex()`
+      - `set(element)`
+
 
 ## [6. Extending Collection with Set, SortedSet and NavigableSet.md](devJava/6.%20Extending%20Collection%20with%20Set%2C%20SortedSet%20and%20NavigableSet.md)
     
