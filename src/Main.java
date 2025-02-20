@@ -1,3 +1,5 @@
+import com.sun.source.tree.Tree;
+
 import java.util.*;
 import java.util.function.Predicate;
 
@@ -7,17 +9,8 @@ import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>(List.of("0", "1", "2", "3"));
-        ListIterator<String> stringListIterator = list.listIterator(1);
-        while (stringListIterator.hasNext()) {
-            if(stringListIterator.next().equals("1"))
-                stringListIterator.remove();
-        }
-
-        System.out.println(list);   // [0, 1, 2, 3]
-
-        list.subList(1, 3).clear();
-        System.out.println(list);   // [0, 3]
+        NavigableSet<String> navigableSet = new TreeSet<>(Set.of("a", "b", "c", "d", "e", "f"));    // [a, b, c, d, e, f]
+        NavigableSet<String> reversedStrings = navigableSet.descendingSet();    // [f, e, d, c, b, a]
 
 
     }
