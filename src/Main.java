@@ -9,9 +9,6 @@ import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
-        NavigableSet<String> navigableSet = new TreeSet<>(Set.of("a", "b", "c", "d", "e", "f"));    // [a, b, c, d, e, f]
-        NavigableSet<String> reversedStrings = navigableSet.descendingSet();    // [f, e, d, c, b, a]
-
 
     }
 }
